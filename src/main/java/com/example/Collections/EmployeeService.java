@@ -19,6 +19,7 @@ public class EmployeeService {
     public EmployeeService() {
         employees = new ArrayList<>();
     }
+
     public List<Employee> getAllEmployees() {
         return employees;
     }

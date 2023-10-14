@@ -6,6 +6,7 @@ public class Employee {
     public Employee(String fullName) {
         this.fullName = fullName;
     }
+
     public String getFullName() {
         return this.fullName;
     }
@@ -13,7 +14,7 @@ public class Employee {
     @Override
     public String toString() {
         final String s = "Employee " +
-                "fullName= " ;
+                "fullName= ";
         return s;
     }
 
