@@ -1,10 +1,14 @@
 package com.example.Collections;
 
 
+import com.example.Collections.Exceptoin.EmployeeAlreadyAddedException;
+import com.example.Collections.Exceptoin.EmployeeNotFoundException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/employee")
@@ -18,23 +22,37 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    @GetMapping("/add")
-    public Employee addEmployee(@RequestParam String fullName) {
-        return employeeService.addEmployee(fullName);
+    public String addEmployee(@RequestParam String fullName) {
+        try {
+            employeeService.addEmployee(fullName);
+            return "Сотрудник добавлен: " + fullName;
+        } catch (EmployeeAlreadyAddedException e) {
+            return "Ошибка: " + e.getMessage();
+        }
     }
 
     @GetMapping("/remove")
-    public Employee removeEmployee(@RequestParam String fullName) {
-        return employeeService.removeEmployee(fullName);
+    public String removeEmployee(@RequestParam String fullName) {
+        try {
+            employeeService.removeEmployee(fullName);
+            return "Сотрудник удален: " + fullName;
+        } catch (EmployeeNotFoundException e) {
+            return "Ошибка: " + e.getMessage();
+        }
     }
 
     @GetMapping("/find")
-    public Employee findEmployee(@RequestParam String fullName) {
-        return employeeService.findEmployee(fullName);
+    public String findEmployee(@RequestParam String fullName) {
+        try {
+            Employee employee = employeeService.findEmployee(fullName);
+            return "Сотрудник найден: " + employee.getFullName();
+        } catch (EmployeeNotFoundException e) {
+            return "Ошибка: " + e.getMessage();
+        }
     }
 
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
-        return employeeService.getAllEmployees();
+        return new ArrayList<>(employeeService.getAllEmployees().values());
     }
 }
