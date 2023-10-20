@@ -1,5 +1,7 @@
 package com.example.Collections;
 
+import java.util.Objects;
+
 public class Employee {
     private String fullName;
 
@@ -11,19 +13,17 @@ public class Employee {
         return this.fullName;
     }
 
+        @Override
+        public boolean equals (Object o){
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Employee employee = (Employee) o;
+            return Objects.equals(fullName, employee.fullName);
+        }
 
-    @Override
-    public String toString() {
-        final String s = "Employee " +
-                "fullName= ";
-        return s;
-    }
-
-    public static void getAllEmployees(Employee[] employees) {
-        for (Employee employee : employees) {
-            if (employee != null) {
-                System.out.println(employee.toString());
-            }
+        @Override
+        public int hashCode () {
+            return Objects.hash(fullName);
         }
     }
-}
+
