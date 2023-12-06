@@ -53,6 +53,6 @@ public class EmployeeController {
 
     @GetMapping("/employees")
     public List<Employee> getAllEmployees() {
-        return new ArrayList<>(employeeService.getAllEmployees().values());
+        return new ArrayList<>(employeeService.getAllEmployees());
     }
 }

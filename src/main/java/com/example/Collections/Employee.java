@@ -4,13 +4,25 @@ import java.util.Objects;
 
 public class Employee {
     private String fullName;
+    private int departmentId;
+    private int salary;
 
-    public Employee(String fullName) {
+    public Employee(String fullName, int departmentId, int salary) {
         this.fullName = fullName;
+        this.departmentId = departmentId;
+        this.salary = salary;
     }
 
     public String getFullName() {
         return this.fullName;
+    }
+
+    public int getDepartmentId() {
+        return departmentId;
+    }
+
+    public int getSalary() {
+        return salary;
     }
 
         @Override
@@ -25,5 +37,6 @@ public class Employee {
         public int hashCode () {
             return Objects.hash(fullName);
         }
-    }
+
+}
 
