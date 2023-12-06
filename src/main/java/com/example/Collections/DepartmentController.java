@@ -13,8 +13,10 @@ public class DepartmentController {
 
     private EmployeeService employeeService;
 
-    public DepartmentController() {
-        this.employeeService = new EmployeeService();
+    private DepartmentService departmentService;
+
+    public DepartmentController(DepartmentService departmentService) {
+        this.departmentService = departmentService;
     }
 
     private boolean departmentExists(int departmentId) {
@@ -22,29 +24,29 @@ public class DepartmentController {
     }
 
     @GetMapping("/departments/max-salary")
-    public Employee getEmployeeWithMaxSalaryByDepartment(@RequestParam("departmentId") int departmentId) {
+    public Integer getMaxSalaryByDepartmentId(@RequestParam("departmentId") int departmentId) {
         if (departmentExists(departmentId)) {
-            return employeeService.getEmployeeWithMaxSalaryByDepartment(departmentId);
+            return departmentService.getMaxSalaryByDepartmentId(departmentId);
         }
         return null;
     }
 
     @GetMapping("/departments/min-salary")
-    public Employee getEmployeeWithMinSalaryByDepartment(@RequestParam("departmentId") int departmentId) {
+    public Integer getEmployeeWithMinSalaryByDepartment(@RequestParam("departmentId") int departmentId) {
         if (departmentExists(departmentId)) {
-            return employeeService.getEmployeeWithMinSalaryByDepartment(departmentId);
+            return departmentService.getMinSalaryByDepartmentId(departmentId);
         }
         return null;
     }
 
     @GetMapping("/departments")
     public Map<Integer, List<Employee>> getAllEmployeesByDepartment() {
-        return employeeService.getAllEmployeesByDepartment();
+        return departmentService.getAllEmployeesByDepartment();
     }
 
     @GetMapping("/department/{id}/employees")
     public List<Employee> getEmployeesByDepartmentId(@PathVariable int id) {
-        List<Employee> employees = employeeService.getAllEmployeesByDepartment(id);
+        List<Employee> employees = departmentService.getAllEmployeesByDepartment(id);
         return employees;
     }
 }

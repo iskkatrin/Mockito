@@ -18,7 +18,6 @@ public class EmployeeService {
         employees = new HashMap<>();
     }
 
-
     public List<Employee> getAllEmployees() {
         return new ArrayList<>(employees.values());
     }
@@ -56,8 +55,13 @@ public class EmployeeService {
         } catch (EmployeeNotFoundException e) {
             return "Ошибка: " + e.getMessage();
         }
+    }
 
+    public void findEmployee(String fullName) {
+        for (Employee employee : employees.values())
+            if (employee.getFullName().equals(fullName)) {
+                throw new EmployeeNotFoundException("Сотрудник не найден: ");
+            }
+        System.out.println("Сотрудник не найден: " + fullName);
     }
 }
-
-

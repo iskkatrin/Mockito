@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 public class DepartmentServiceImpl implements DepartmentService {
-
     private EmployeeService employeeService;
 
     public DepartmentServiceImpl(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
+
 @Override
     public List<Employee> getEmployeesByDepartmentId(int departmentId) {
         List<Employee> employees = new ArrayList<>();
