@@ -11,7 +11,7 @@ import java.util.Map;
 
 
 public class EmployeeService {
-    private static final int MAX_EMPLOYEES = 10;
+    private static int MAX_EMPLOYEES = 10;
     private Map<String, Employee> employees;
 
     public EmployeeService() {
