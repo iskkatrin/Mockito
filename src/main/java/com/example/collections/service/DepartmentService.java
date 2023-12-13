@@ -1,5 +1,6 @@
-package com.example.Collections;
+package com.example.collections.service;
 
+import com.example.collections.model.Employee;
 
 import java.util.List;
 import java.util.Map;

@@ -1,5 +1,8 @@
-package com.example.Collections;
+package com.example.collections.controller;
 
+import com.example.collections.model.Employee;
+import com.example.collections.service.DepartmentService;
+import com.example.collections.service.EmployeeService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,7 +49,7 @@ public class DepartmentController {
 
     @GetMapping("/department/{id}/employees")
     public List<Employee> getEmployeesByDepartmentId(@PathVariable int id) {
-        List<Employee> employees = departmentService.getAllEmployeesByDepartment(id);
+        List<Employee> employees = departmentService.getEmployeesByDepartmentId(id);
         return employees;
     }
 }

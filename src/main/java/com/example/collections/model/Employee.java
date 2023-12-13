@@ -1,4 +1,4 @@
-package com.example.Collections;
+package com.example.collections.model;
 
 import java.util.Objects;
 
@@ -7,7 +7,7 @@ public class Employee {
     private int departmentId;
     private int salary;
 
-    public Employee(String fullName) {
+    public Employee(String fullName, int departmentId , int salary) {
         this.fullName = fullName;
         this.departmentId = departmentId;
         this.salary = salary;

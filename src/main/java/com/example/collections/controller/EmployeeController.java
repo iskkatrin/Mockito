@@ -1,8 +1,9 @@
-package com.example.Collections;
+package com.example.collections.controller;
 
 
-import com.example.Collections.Exceptoin.EmployeeAlreadyAddedException;
-import com.example.Collections.Exceptoin.EmployeeNotFoundException;
+import com.example.collections.service.EmployeeService;
+import com.example.collections.exceptoin.EmployeeNotFoundException;
+import com.example.collections.model.Employee;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,13 +23,9 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    public String addEmployee(@RequestParam String fullName) {
-        try {
-            employeeService.addEmployee(fullName);
-            return "Сотрудник добавлен: " + fullName;
-        } catch (EmployeeAlreadyAddedException e) {
-            return "Ошибка: " + e.getMessage();
-        }
+    @GetMapping
+    public Employee addEmployee(@RequestParam String name, @RequestParam Integer salary, @RequestParam Integer dep) {
+        return employeeService.addEmployee(new Employee(name, salary, dep));
     }
 
     @GetMapping("/remove")

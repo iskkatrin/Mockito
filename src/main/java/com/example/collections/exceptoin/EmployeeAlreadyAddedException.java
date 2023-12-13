@@ -1,4 +1,4 @@
-package com.example.Collections.Exceptoin;
+package com.example.collections.exceptoin;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

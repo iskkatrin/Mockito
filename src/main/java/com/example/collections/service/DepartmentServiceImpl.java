@@ -1,5 +1,6 @@
-package com.example.Collections;
+package com.example.collections.service;
 
+import com.example.collections.model.Employee;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,14 +9,15 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class DepartmentServiceImpl implements DepartmentService {
+public class DepartmentServiceImpl implements DepartmentService{
+
     private EmployeeService employeeService;
 
     public DepartmentServiceImpl(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
 
-@Override
+    @Override
     public List<Employee> getEmployeesByDepartmentId(int departmentId) {
         List<Employee> employees = new ArrayList<>();
         for (Employee employee : employeeService.getAllEmployees()) {
@@ -25,6 +27,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
         return employees;
     }
+
     @Override
     public int getSalarySumByDepartmentId(int departmentId) {
         int sum = 0;
@@ -35,6 +38,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
         return sum;
     }
+
     @Override
     public int getMaxSalaryByDepartmentId(int departmentId) {
         int maxSalary = Integer.MIN_VALUE;
@@ -45,6 +49,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
         return maxSalary;
     }
+
     @Override
     public int getMinSalaryByDepartmentId(int departmentId) {
         int minSalary = Integer.MAX_VALUE;
@@ -55,6 +60,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
         return minSalary;
     }
+
     @Override
     public Map<Integer, List<Employee>> getAllEmployeesByDepartment() {
         Map<Integer, List<Employee>> employeesByDepartment = new HashMap<>();
